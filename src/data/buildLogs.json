@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2026.09",
+    "title": "AKITO CRM / React + TypeScript UI",
+    "tag": "Frontend"
+  },
+  {
+    "date": "2026.09",
+    "title": "PHP API / Migration System",
+    "tag": "Backend"
+  },
+  {
+    "date": "2026.09",
+    "title": "Docker Development Environment",
+    "tag": "Infrastructure"
+  },
+  {
+    "date": "2026.08",
+    "title": "REST API Authentication",
+    "tag": "Security"
+  },
+  {
+    "date": "2026.08",
+    "title": "AWS / Server Architecture",
+    "tag": "Cloud"
+  }
+]

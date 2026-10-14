@@ -1,0 +1,104 @@
+[
+  {
+    "number": "01",
+    "slug": "akito-crm",
+    "title": "AKITO CRM",
+    "description": "小規模事業者のための業務管理システム。顧客・案件・ステータスを一つの画面で扱える構成を想定。",
+    "stack": [
+      "React",
+      "TypeScript",
+      "API",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "accent": "CRM / BUSINESS",
+    "visual": "CRM SYSTEM",
+    "overview": "顧客情報、案件情報、ステータスを一画面で確認できる業務管理の土台を想定した構成です。",
+    "problem": "顧客情報や案件の進捗が分散し、状態を把握するために追加の確認が必要になる課題を想定しています。",
+    "solution": "顧客・案件・進捗をまとめて可視化し、業務の見通しを改善する画面構成を採用しています。",
+    "features": [
+      "顧客情報の一覧管理",
+      "案件の進捗ステータス管理",
+      "担当業務の可視化",
+      "API連携を想定したデータ構造"
+    ],
+    "architecture": [
+      "React + TypeScript による UI 実装",
+      "API を介したデータ取得・更新",
+      "PostgreSQL を想定した永続層",
+      "Docker を用いたローカル開発環境"
+    ],
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  },
+  {
+    "number": "02",
+    "slug": "akito-api",
+    "title": "AKITO API",
+    "description": "PHPで構築するREST API。認証、CRUD、Migration、DB連携までを一通り扱えるバックエンド基盤。",
+    "stack": [
+      "PHP",
+      "MySQL",
+      "REST API",
+      "Auth",
+      "Migration"
+    ],
+    "accent": "BACKEND / API",
+    "visual": "REST API",
+    "overview": "認証、CRUD、DB接続、Migration をまとめて扱えるバックエンドの基盤を構成することを目的とした実装です。",
+    "problem": "API を毎回作るたびに認証・DB接続・データ操作の基盤を再構築する負担がありました。",
+    "solution": "共通パターンとして扱える API 構成を整理し、バックエンド開発の再利用性を高める方針を採用しました。",
+    "features": [
+      "認証付きの API 設計",
+      "CRUD の基本パターン",
+      "データベース連携",
+      "Migration を意識した構成"
+    ],
+    "architecture": [
+      "PHP による API 実装",
+      "MySQL を用いたデータ保管",
+      "認証を含むルーティング構造",
+      "Migration を前提としたデータ更新"
+    ],
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  },
+  {
+    "number": "03",
+    "slug": "dev-environment",
+    "title": ".DEV ENVIRONMENT",
+    "description": "React / Vue / Svelteなどの開発環境をCLIから生成する、自分のためのDeveloper Environment。",
+    "stack": [
+      "Node.js",
+      "CLI",
+      "Vite",
+      "Git",
+      "TypeScript"
+    ],
+    "accent": "TOOLING / CLI",
+    "visual": "DEV ENV",
+    "overview": "React / Vue / Svelte などの開発環境を CLI から生成できるようにし、初期セットアップの手間を低減することを目指したツールです。",
+    "problem": "フロントエンドの環境差分が大きく、開発開始時に必要なセットアップが毎回重なっていました。",
+    "solution": "テンプレート化と CLI 化を行い、構成の再利用性と再現性を高める設計に整理しました。",
+    "features": [
+      "CLI からの環境生成",
+      "テンプレート化されたプロジェクト雛形",
+      "開発開始時の手順簡略化",
+      "Vite と Git を前提とした再利用性"
+    ],
+    "architecture": [
+      "Node.js ベースの CLI 実装",
+      "Vite を利用したフロントエンド雛形",
+      "Git を前提とした生成フロー",
+      "TypeScript による保守性の確保"
+    ],
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  }
+]

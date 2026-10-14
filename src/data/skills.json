@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Frontend",
+    "items": [
+      "React",
+      "TypeScript",
+      "HTML / CSS",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "title": "Backend",
+    "items": [
+      "PHP",
+      "Node.js",
+      "REST API",
+      "PostgreSQL / MySQL"
+    ]
+  },
+  {
+    "title": "Infrastructure",
+    "items": [
+      "Docker",
+      "AWS",
+      "Git",
+      "Linux"
+    ]
+  },
+  {
+    "title": "Focus",
+    "items": [
+      "Automation",
+      "Business Tools",
+      "Web Production",
+      "System Design"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "number": "01",
+    "label": "Works",
+    "target": "works"
+  },
+  {
+    "number": "02",
+    "label": "Build Log",
+    "target": "log"
+  },
+  {
+    "number": "03",
+    "label": "About",
+    "target": "about"
+  },
+  {
+    "number": "04",
+    "label": "Contact",
+    "target": "contact"
+  }
+]

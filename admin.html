@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080d18" />
+    <title>Admin // AKITO DEV</title>
+    <link rel="stylesheet" href="/admin.css" />
+    <script type="module" src="/admin.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/">AKITO <span>// DEV</span></a>
+        <a class="back-link" href="/">公開ページへ戻る ↗</a>
+      </header>
+
+      <section id="login-panel" class="panel login-panel" aria-labelledby="login-title" hidden>
+        <p class="eyebrow">SECURE ACCESS</p>
+        <h1 id="login-title">管理者ログイン</h1>
+        <p class="muted">管理者アカウントでログインしてください。</p>
+        <form id="login-form" class="stack">
+          <label>
+            ユーザー名
+            <input name="username" autocomplete="username" required />
+          </label>
+          <label>
+            パスワード
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="button primary" type="submit">ログイン</button>
+        </form>
+        <p id="login-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="admin-panel" hidden>
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">CONTENT MANAGEMENT</p>
+            <h1>管理画面</h1>
+            <p class="muted">公開ページに表示する作品と制作ログを管理します。</p>
+          </div>
+          <div class="account">
+            <span id="account-name"></span>
+            <button id="logout-button" class="button quiet" type="button">ログアウト</button>
+          </div>
+        </div>
+
+        <p id="admin-message" class="message" role="status" aria-live="polite"></p>
+
+        <nav class="tabs" aria-label="管理メニュー">
+          <button class="tab active" type="button" data-tab="projects">作品</button>
+          <button class="tab" type="button" data-tab="build-logs">制作ログ</button>
+        </nav>
+
+        <section id="projects-section" class="content-section" aria-labelledby="projects-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PROJECTS</p>
+              <h2 id="projects-title">作品</h2>
+            </div>
+            <button id="new-project-button" class="button primary" type="button">＋ 作品を追加</button>
+          </div>
+          <div id="projects-list" class="record-list" aria-live="polite"></div>
+        </section>
+
+        <section id="build-logs-section" class="content-section" aria-labelledby="build-logs-title" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BUILD LOGS</p>
+              <h2 id="build-logs-title">制作ログ</h2>
+            </div>
+            <button id="new-build-log-button" class="button primary" type="button">＋ ログを追加</button>
+          </div>
+          <div id="build-logs-list" class="record-list" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="project-dialog" class="editor">
+      <form id="project-form" class="editor-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">PROJECT</p>
+            <h2 id="project-dialog-title">作品を追加</h2>
+          </div>
+          <button class="icon-button" type="button" data-close="project-dialog" aria-label="閉じる">×</button>
+        </div>
+        <input name="id" type="hidden" />
+        <div class="form-grid">
+          <label>
+            表示順（1〜9999）
+            <input name="display_order" type="number" min="1" max="9999" required />
+          </label>
+          <label>
+            URL用slug（半角英数字・ハイフン）
+            <input name="slug" maxlength="100" pattern="[a-z0-9][a-z0-9-]*" required />
+          </label>
+          <label class="wide">
+            タイトル
+            <input name="title" maxlength="200" required />
+          </label>
+          <label class="wide">
+            説明
+            <textarea name="description" maxlength="1000" rows="2" required></textarea>
+          </label>
+          <label>
+            アクセント表示
+            <input name="accent" maxlength="100" required />
+          </label>
+          <label>
+            ビジュアル表示
+            <input name="visual" maxlength="100" required />
+          </label>
+          <label class="wide">
+            技術スタック（1行に1つ）
+            <textarea name="stack" rows="3"></textarea>
+          </label>
+          <label>
+            GitHub URL
+            <input name="github" type="text" maxlength="500" />
+          </label>
+          <label>
+            Demo URL
+            <input name="demo" type="text" maxlength="500" />
+          </label>
+          <label class="wide">
+            概要
+            <textarea name="overview" maxlength="5000" rows="3"></textarea>
+          </label>
+          <label class="wide">
+            課題
+            <textarea name="problem" maxlength="5000" rows="3"></textarea>
+          </label>
+          <label class="wide">
+            解決方法
+            <textarea name="solution" maxlength="5000" rows="3"></textarea>
+          </label>
+          <label class="wide">
+            主な機能（1行に1つ）
+            <textarea name="features" rows="4"></textarea>
+          </label>
+          <label class="wide">
+            アーキテクチャ（1行に1つ）
+            <textarea name="architecture" rows="4"></textarea>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button quiet" type="button" data-close="project-dialog">キャンセル</button>
+          <button class="button primary" type="submit">保存する</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="build-log-dialog" class="editor">
+      <form id="build-log-form" class="editor-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">BUILD LOG</p>
+            <h2 id="build-log-dialog-title">制作ログを追加</h2>
+          </div>
+          <button class="icon-button" type="button" data-close="build-log-dialog" aria-label="閉じる">×</button>
+        </div>
+        <input name="id" type="hidden" />
+        <div class="form-grid">
+          <label class="wide">
+            タイトル
+            <input name="title" maxlength="200" required />
+          </label>
+          <label>
+            タグ
+            <input name="tag" maxlength="50" required />
+          </label>
+          <label>
+            日付
+            <input name="logged_at" type="date" required />
+          </label>
+          <label>
+            表示順
+            <input name="sort_order" type="number" min="-9999" max="9999" value="0" required />
+          </label>
+          <label class="check-label">
+            <input name="is_public" type="checkbox" checked />
+            公開ページに表示する
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button quiet" type="button" data-close="build-log-dialog">キャンセル</button>
+          <button class="button primary" type="submit">保存する</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
