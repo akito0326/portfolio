@@ -8,9 +8,6 @@ dist-ssr/
 # Local scratch workspace (frontend / backend / database scaffolding)
 temp/
 
-# Backend (non-public for now: PHP + DB are not published yet)
-backend/
-
 # Local screenshots / dumps (not for public repo)
 127.0.0.1.png
 

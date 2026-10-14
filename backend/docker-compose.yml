@@ -1,0 +1,28 @@
+# 開発用 PostgreSQL。backend/.env の値を読み込んで起動する。
+#   docker compose up -d
+#   docker compose down          # コンテナ停止（データは volume に残る）
+#   docker compose down -v       # データも削除する場合
+name: akito-dev
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: akito-dev-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_DATABASE:-akito_dev}
+      TZ: Asia/Tokyo
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - akito_dev_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_DATABASE:-akito_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  akito_dev_postgres_data:
