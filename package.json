@@ -9,11 +9,16 @@
     "dev:db": "node scripts/dev.mjs --db-only",
     "dev:api": "php -d extension=pdo_pgsql -S 127.0.0.1:8080 -t backend/public backend/public/index.php",
     "build": "tsc -b && vite build",
+    "test:api": "node --test tests/api/public-serialization.test.ts",
+    "db:migrate": "tsx scripts/database.ts migrate",
+    "db:migrate:status": "tsx scripts/database.ts migrate --status",
+    "db:seed": "tsx scripts/database.ts seed",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "lucide-react": "^0.468.0",
+    "pg": "^8.23.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.18.4",
@@ -21,9 +26,11 @@
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.2",
     "vite": "^7.1.7"
   }
