@@ -50,7 +50,7 @@ function Works() {
 
       {status === "loading" && <p className={statusClass}>[LOADING] PROJECTS</p>}
 
-      {status === "error" && <p className={statusClass}>[ERROR] FAILED TO LOAD PROJECTS</p>}
+      {status === "error" && <p className={statusClass}>[COMING SOON] PROJECTS 準備中</p>}
 
       {status === "success" && projects.length === 0 && (
         <p className={statusClass}>[EMPTY] NO PROJECTS</p>

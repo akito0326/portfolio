@@ -72,7 +72,7 @@ function ProjectDetail() {
   if (status === "error") {
     return (
       <main className="mx-auto max-w-4xl px-5 py-32 lg:px-8">
-        <p className={statusClass}>[ERROR] FAILED TO LOAD PROJECT</p>
+        <p className={statusClass}>[COMING SOON] PROJECT 準備中</p>
         <Link to="/" className={`${backLinkClass} mt-6`}>
           <span className="text-cyan-400 transition group-hover:text-cyan-300">←</span>
           <span>BACK TO WORKS</span>

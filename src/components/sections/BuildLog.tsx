@@ -52,7 +52,7 @@ function BuildLog() {
 
       {status === "loading" && <p className={statusClass}>[LOADING] BUILD LOGS</p>}
 
-      {status === "error" && <p className={statusClass}>[ERROR] FAILED TO LOAD BUILD LOGS</p>}
+      {status === "error" && <p className={statusClass}>[COMING SOON] BUILD LOGS 準備中</p>}
 
       {status === "success" && logs.length === 0 && (
         <p className={statusClass}>[EMPTY] NO BUILD LOGS</p>
