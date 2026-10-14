@@ -1,4 +1,4 @@
-import { DatabaseUnavailableError } from "./database";
+import { DatabaseUnavailableError } from "./database.js";
 
 export interface ApiRequest {
   method?: string;

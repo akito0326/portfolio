@@ -1,5 +1,5 @@
-import { DatabaseUnavailableError, query } from "../lib/api/database";
-import { getOnly, json, type ApiRequest, type ApiResponse } from "../lib/api/http";
+import { DatabaseUnavailableError, query } from "../lib/api/database.js";
+import { getOnly, json, type ApiRequest, type ApiResponse } from "../lib/api/http.js";
 
 export default getOnly(async (_request: ApiRequest, response: ApiResponse) => {
   try {

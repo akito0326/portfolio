@@ -1,6 +1,6 @@
-import { query } from "../lib/api/database";
-import { getOnly, json, type ApiRequest, type ApiResponse } from "../lib/api/http";
-import { BUILD_LOG_SELECT, serializeBuildLog, type BuildLogRow } from "../lib/api/build-logs";
+import { query } from "../lib/api/database.js";
+import { getOnly, json, type ApiRequest, type ApiResponse } from "../lib/api/http.js";
+import { BUILD_LOG_SELECT, serializeBuildLog, type BuildLogRow } from "../lib/api/build-logs.js";
 
 export default getOnly(async (_request: ApiRequest, response: ApiResponse) => {
   const rows = await query<BuildLogRow>(

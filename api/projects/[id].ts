@@ -1,6 +1,6 @@
-import { query } from "../../lib/api/database";
-import { badRequest, getOnly, json, type ApiRequest, type ApiResponse } from "../../lib/api/http";
-import { PROJECT_SELECT, serializeProject, type ProjectRow } from "../../lib/api/projects";
+import { query } from "../../lib/api/database.js";
+import { badRequest, getOnly, json, type ApiRequest, type ApiResponse } from "../../lib/api/http.js";
+import { PROJECT_SELECT, serializeProject, type ProjectRow } from "../../lib/api/projects.js";
 
 export default getOnly(async (request: ApiRequest, response: ApiResponse) => {
   const rawId = request.query.id;
