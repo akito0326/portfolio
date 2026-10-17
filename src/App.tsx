@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ScrollToTop from "./components/layout/ScrollToTop";
@@ -8,8 +8,20 @@ import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import { navigation } from "./data";
 
+type Theme = "light" | "dark";
+const themeStorageKey = "portfolio-theme";
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>(() => {
+    const savedTheme = localStorage.getItem(themeStorageKey);
+    return savedTheme === "dark" ? "dark" : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem(themeStorageKey, theme);
+  }, [theme]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
@@ -22,12 +34,14 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen overflow-x-hidden bg-[#080d18] text-slate-100">
+      <div className="theme-bg theme-text-primary min-h-screen overflow-x-hidden">
         <Header
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           scrollTo={scrollTo}
           navigation={navigation}
+          theme={theme}
+          toggleTheme={() => setTheme((currentTheme) => currentTheme === "light" ? "dark" : "light")}
         />
 
         <Routes>

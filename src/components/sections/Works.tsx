@@ -8,7 +8,7 @@ import type { Project } from "../../types/content";
 type FetchStatus = "loading" | "success" | "error";
 
 const statusClass =
-  "rounded border border-white/6 bg-[#0b1220]/75 px-5 py-6 font-mono text-[10px] tracking-[0.18em] text-slate-500 sm:text-xs";
+  "theme-border theme-surface theme-text-muted rounded border px-4 py-6 font-mono text-xs tracking-[0.18em]";
 
 function Works() {
   const [status, setStatus] = useState<FetchStatus>("loading");
@@ -40,7 +40,7 @@ function Works() {
   }, []);
 
   return (
-    <section id="works" className="mx-auto max-w-6xl px-5 py-24 lg:px-8 lg:py-32">
+    <section id="works" className="mx-auto max-w-6xl px-4 py-24 lg:px-8 lg:py-32">
       <SectionHeading
         number="01"
         eyebrow="SELECTED WORKS"
@@ -57,7 +57,7 @@ function Works() {
       )}
 
       {status === "success" && projects.length > 0 && (
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           {projects.map((project) => (
             <ProjectCard key={project.number} project={project} />
           ))}

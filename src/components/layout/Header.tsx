@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import type { NavigationItem } from "../../types/content";
 
@@ -8,6 +8,8 @@ type HeaderProps = {
   setMenuOpen: (value: boolean) => void;
   scrollTo: (id: string) => void;
   navigation: NavigationItem[];
+  theme: "light" | "dark";
+  toggleTheme: () => void;
 };
 
 function Header({
@@ -15,6 +17,8 @@ function Header({
   setMenuOpen,
   scrollTo,
   navigation,
+  theme,
+  toggleTheme,
 }: HeaderProps) {
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -105,24 +109,24 @@ function Header({
   }, [navigation, pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/6 bg-[#080d18]/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
+    <header className="theme-header theme-border fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
 
         {/* Logo */}
         <button
           onClick={() => scrollTo("top")}
-          className="font-mono text-sm font-bold tracking-tight"
+          className="min-h-11 font-mono text-base font-bold tracking-tight"
         >
           AKITO <span className="text-cyan-400">// DEV</span>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 text-xs font-medium text-slate-400 md:flex">
+        <nav className="theme-text-secondary hidden items-center gap-8 text-base font-medium md:flex">
           {navigation.map((item) => (
             <button
               key={item.target}
               onClick={() => scrollTo(item.target)}
-              className={`transition ${activeSection === item.target ? "text-cyan-300" : "hover:text-cyan-300"}`}
+              className={`min-h-11 py-2 transition ${activeSection === item.target ? "text-cyan-300" : "hover:text-cyan-300"}`}
             >
               <span className="mr-1 font-mono text-cyan-400">
                 {item.number}
@@ -133,26 +137,37 @@ function Header({
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="rounded-md border border-white/10 p-2 text-slate-300 md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="menu"
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            className="theme-border-strong theme-text-secondary inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border p-2 transition hover:text-cyan-500"
+            onClick={toggleTheme}
+            aria-label={theme === "light" ? "ダークモードに切り替え" : "ライトモードに切り替え"}
+            aria-pressed={theme === "dark"}
+            title={theme === "light" ? "ダークモードに切り替え" : "ライトモードに切り替え"}
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+
+          <button
+            className="theme-border-strong theme-text-secondary inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border p-2 md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="メニュー"
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="border-t border-white/6 bg-[#080d18] px-5 py-5 md:hidden">
-          <nav className="flex flex-col gap-4 text-sm text-slate-300">
+        <div className="theme-border theme-surface border-t px-4 py-4 md:hidden">
+          <nav className="theme-text-secondary flex flex-col gap-4 text-base">
             {navigation.map((item) => (
               <button
                 key={item.target}
                 onClick={() => scrollTo(item.target)}
-                className={`text-left transition ${activeSection === item.target ? "text-cyan-300" : "hover:text-cyan-300"}`}
+                className={`min-h-11 py-2 text-left transition ${activeSection === item.target ? "text-cyan-300" : "hover:text-cyan-300"}`}
               >
                 <span className="mr-2 font-mono text-cyan-400">
                   {item.number}
