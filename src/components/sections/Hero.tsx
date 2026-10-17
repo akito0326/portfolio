@@ -7,7 +7,7 @@ function Hero({ scrollTo }: { scrollTo: (id: string) => void }) {
       <div className="absolute left-1/2 top-1/2 h-130 w-130 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center lg:px-8">
-        <div className="theme-text-muted mb-7 inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em]">
+        <div className="theme-text-muted mb-7 flex flex-col items-center gap-2 font-mono text-xs tracking-wider sm:inline-flex sm:flex-row">
           <span className="text-cyan-400">[BUILD_MODE]</span>
           <span>CREATE / SYSTEMIZE / REPEAT</span>
         </div>
